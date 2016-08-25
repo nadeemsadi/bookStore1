@@ -1,0 +1,42 @@
+<h3 style= "margin-left: 20px; color: #fff">Log In</h3>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <table style="margin-left: 20px; border: 4px solid #fff; width: 20%; height:230px">
+
+    <tr class="field" style="height: 30px; width: 400px">
+      <td style="padding-left: 20px"><%= f.label :email %></td>
+    </tr>
+    
+    <tr class="field" style="height: 30px; width: 400px">  
+        <td style="padding-left: 20px"><%= f.email_field :email, autofocus: true %></td>
+    </tr>    
+
+     <tr class="field" style="height: 30px; width: 400px">  
+        <td style="padding-left: 20px"><%= f.label :password %></td>
+     </tr> 
+
+     <tr class="field" style="height: 30px; width: 400px">  
+        <td style="padding-left: 20px"><%= f.password_field :password, autocomplete: "off" %></td>
+     </tr> 
+
+      <% if devise_mapping.rememberable? %>
+
+        <tr class="field" style="height: 30px; width: 400px">
+            <td style="padding-left: 20px">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>                  
+            </td>
+        </tr>
+
+        <tr class="actions" style="height: 30px; width: 400px">  
+            <td style="padding-left: 20px"><%= f.submit "Log in" %></td>    
+        </tr> 
+                
+      <% end %>
+      
+    </table>
+<% end %>
+
+<h4 style="padding-left: 20px"><%= render "devise/shared/links" %></h4>
+

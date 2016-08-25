@@ -1,0 +1,43 @@
+<h1 style ="color: #201bc1; margin-left: 10px"><u>SHOPPING CART</u></h1>  
+	<% if @cart.empty? %>
+		<h4 style ="color: #201bc1; margin-left: 10px"> .Your Cart Is Empty</H4>
+	<% else %>
+		<h4 style ="color: #201bc1; margin-left: 10px"><strong><%= link_to'Clear Cart', cart_clear_path %><strong></h4>
+	<% end %>
+
+	
+<br>
+
+<% total = 0 %>
+<div>
+
+	<% @cart.each do |id, quantity| %>
+		<% product = Product.find_by_id(id) %>
+			<table style="margin-left: 20px">				
+				<tr>
+					<th colspan="2" style ="color: #ff0000; margin-left: 10px"><strong><%= link_to product.title, product %></strong></th>
+				</tr>
+				<tr>						
+					<td rowspan="3" style="margin-left: 10px"><%= image_tag(product.image_url, width: '120px') %></td>							
+					<td style ="color: #201bc1; padding-left: 10px"><strong>Price: <%= number_to_currency(product.price, :unit => '$') %><br>
+
+						Quantity: <%= quantity %></strong><br>
+						<% total += quantity * product.price %>						
+					</td>
+				</tr>
+				
+				<br>
+			</table>
+	<% end %>
+	<div>			
+		<h3 style ="color: #201bc1; margin-left: 10px">
+			<strong>Total: <%= number_to_currency(total, :unit => '$') %></strong>
+		</h3>
+				
+	</div>	
+	<% if session[:last_product_page] %>
+  <%= link_to "Continue Shopping", session[:last_product_page] %> |
+<% end %>
+
+			
+</div>

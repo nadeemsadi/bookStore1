@@ -1,0 +1,49 @@
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+<table style = "border: 3px solid #fff; width: 800px height: 100%; margin-left: 10px">
+  
+    <tr style="background-color: #f6546a; font:bold 20px; border: 1px solid">
+      <th style = "padding-left:10px; width: 150px; height: 50px; font-size: 15px; color:#fff">Image's file name: </th>
+      <td class="field" style= "padding-left:10px; width: 300px; height: 50px; font-size: 15px;border: 1px solid"><%= f.text_field :image_url %></td>
+    </tr>
+
+    <tr style="background-color: #f6546a; font:bold 20px; border: 1px solid">  
+      <th style = "padding-left:10px; width: 150px; height: 50px; font-size: 15px; color:#fff">Title:</th>
+      <td class="field" style= "padding-left:10px;  width: 300px; height: 50px; font-size: 15px;border: 1px solid"><strong><%= f.text_field :title %></strong></td>
+    </tr>
+
+    <tr style="background-color: #f6546a; font:bold 20px; border: 1px solid">    
+      <th style = "padding-left:10px; width: 150px; height: 50px; font-size: 15px; color:#fff">Description:</th>      
+      <td class="field" style= "padding-left:10px; width: 300px; height: 100px; font-size: 15px;border: 1px solid"><%= f.text_field :description %></td>        
+    </tr>
+     
+    <tr style="background-color: #f6546a; font:bold 20px; border: 1px solid">     
+      <th style = "padding-left:10px; width: 150px; height: 50px; font-size: 15px; color:#fff">Price:</th>
+      <td class="field" style= "padding-left:10px;  width: 300px; height: 50px; font-size: 15px;border: 1px solid"><strong><%= f.text_field :price%></strong></td>
+    </tr>
+
+    <tr style="background-color: #f6546a; font:bold 20px; border: 1px solid">       
+      <th style = "padding-left:10px; width: 150px; height: 50px; font-size: 15px; color:#fff">Category Name:</th>                  
+      <td class="field" style= "padding-left:10px;  width: 300px; height: 50px; font-size: 15px;border: 1px solid"><%= f.text_field :category %></td>        
+    </tr>
+    
+    <tr style="background-color: #f6546a; font:bold 20px; border: 1px solid">       
+        <td class="actions" colspan="2" style="width: 300px; height:50px; padding-left:130px; font-size: 20px" ><%= f.submit("Create Book") %> </td>
+     </tr> 
+
+</table>
+
+
+<% end %>

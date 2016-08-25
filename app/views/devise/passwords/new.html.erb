@@ -1,0 +1,20 @@
+<h3 style= "margin-left: 20px; color: #fff">Forgot Your Password?</h3>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <table style="margin-left: 20px; border: 4px solid #fff; width: 20%; height:150px">	
+  		<tr class="field" style="height: 20px">
+      		<td style="padding-left: 20px; color: #fff"><%= f.label :email %></td>		
+		</tr>
+		<tr class="field" style="height: 20px">
+      		<td style="padding-left: 20px; color: #fff"><%= f.email_field :email, autofocus: true %></td>
+		</tr>
+
+  		<tr class="actions" style="height: 20px">
+      		<td style="padding-left: 20px"><%= f.submit "Send me reset password instructions" %></td>
+		</tr>
+  </table>
+<% end %>
+
+<h4 style="padding-left: 20px"><%= render "devise/shared/links" %></h4>
